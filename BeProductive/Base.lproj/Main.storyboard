@@ -39,13 +39,43 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ook-e5-TvQ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="ook-e5-TvQ" customClass="CalendarCell" customModule="BeProductive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="AB" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8og-a8-HjK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="75"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="75" id="maC-xg-dhD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="48"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LNp-p9-hfR">
+                                                    <rect key="frame" x="0.0" y="75" width="105" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="LNp-p9-hfR" firstAttribute="centerX" secondItem="ook-e5-TvQ" secondAttribute="centerX" id="3XW-Ug-uNM"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="LNp-p9-hfR" secondAttribute="bottom" constant="-8" id="50E-ap-lJV"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="8og-a8-HjK" secondAttribute="trailing" constant="-8" id="FBf-cP-GP5"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="LNp-p9-hfR" secondAttribute="trailing" constant="-8" id="jNz-Y5-6fR"/>
+                                            <constraint firstItem="8og-a8-HjK" firstAttribute="top" secondItem="ook-e5-TvQ" secondAttribute="topMargin" constant="-8" id="nP8-1o-4P3"/>
+                                            <constraint firstItem="8og-a8-HjK" firstAttribute="leading" secondItem="ook-e5-TvQ" secondAttribute="leadingMargin" constant="-8" id="v4y-sY-vC1"/>
+                                            <constraint firstItem="LNp-p9-hfR" firstAttribute="leading" secondItem="ook-e5-TvQ" secondAttribute="leadingMargin" constant="-8" id="x1C-AC-H8n"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="calendarInitialsTextView" destination="8og-a8-HjK" id="4Mj-MP-KPt"/>
+                                            <outlet property="calendarNameTextView" destination="LNp-p9-hfR" id="1Cc-UB-uma"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

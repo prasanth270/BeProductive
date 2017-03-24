@@ -12,9 +12,11 @@ import EventKit
 class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let eventStore = EKEventStore()
-    var calenders: [EKCalendar]?
+    var eventCalenders: [EKCalendar]?
     var events: [EKEvent]?
     var dateFormat: DateFormat!
+    
+    var calendars = [Calendar]()
     
     // UI Collection View
     @IBOutlet weak var collectionView: UICollectionView!
@@ -25,7 +27,21 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     /* -- Implementation for UICollectionViewDataSource -- */
+    
+    /** Set Contents of a Calendar Cell */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as? CalendarCell {
+            
+            let calendar: Calendar!
+            
+            calendar = calendars[indexPath.row]
+            
+            cell.configureCell(_calendar: calendar)
+            
+            return cell
+        }
+        
         return UICollectionViewCell()
     }
     
@@ -37,10 +53,10 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
     }
     
-    // Number of Items in Collection View - Depends on Number of Calendars
+    /** Number of Items in Collection View - Depends on Number of Calendars */
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return calenders!.count
+        return calendars.count
     }
     
     /* -- Implementation for UICollectionViewDataSource -- */
@@ -83,15 +99,20 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     /** Retrieve Calenders */
     func loadCalendar() {
-        calenders = eventStore.calendars(for: EKEntityType.event)
-        for obj in calenders! {
-            print(obj.title)
+        eventCalenders = eventStore.calendars(for: EKEntityType.event)
+        for obj in eventCalenders! {
+            
+            let title = obj.title
+            let index = title.index(title.startIndex, offsetBy: 1)
+            print(index)
+            
+            calendars.append(Calendar(initial: title.substring(to: index), name: title))
         }
     }
     
     /** Load Events of a Particular Calender using Title */
     func loadEvents() {
-        let predicate = eventStore.predicateForEvents(withStart: Date().addingTimeInterval(-60*60*100), end: Date().addingTimeInterval(60*60*1000) , calendars: [calenders![2]])
+        let predicate = eventStore.predicateForEvents(withStart: Date().addingTimeInterval(-60*60*100), end: Date().addingTimeInterval(60*60*1000) , calendars: [eventCalenders![2]])
         self.events = eventStore.events(matching: predicate)
         if events != nil {
             for x in events! {

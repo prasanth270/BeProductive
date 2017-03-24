@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5121B89F1E7F445B00095C4B /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5121B89E1E7F445B00095C4B /* CalendarCell.swift */; };
+		5121B8A11E7F456700095C4B /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5121B8A01E7F456700095C4B /* Calendar.swift */; };
 		519828201E41BB0E008DCF7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198281F1E41BB0E008DCF7B /* AppDelegate.swift */; };
 		519828221E41BB0E008DCF7B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519828211E41BB0E008DCF7B /* MainVC.swift */; };
 		519828251E41BB0E008DCF7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519828231E41BB0E008DCF7B /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5121B89E1E7F445B00095C4B /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		5121B8A01E7F456700095C4B /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		5198281C1E41BB0E008DCF7B /* BeProductive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeProductive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5198281F1E41BB0E008DCF7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		519828211E41BB0E008DCF7B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -60,6 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5121B89C1E7F443300095C4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5121B8A01E7F456700095C4B /* Calendar.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5121B89D1E7F444300095C4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5121B89E1E7F445B00095C4B /* CalendarCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		519828131E41BB0E008DCF7B = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +101,8 @@
 		5198281E1E41BB0E008DCF7B /* BeProductive */ = {
 			isa = PBXGroup;
 			children = (
+				5121B89D1E7F444300095C4B /* View */,
+				5121B89C1E7F443300095C4B /* Model */,
 				51FA5D1C1E49A1C300077714 /* Util */,
 				51FA5D1B1E49931600077714 /* Controller */,
 				5198281F1E41BB0E008DCF7B /* AppDelegate.swift */,
@@ -223,9 +245,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				519828221E41BB0E008DCF7B /* MainVC.swift in Sources */,
+				5121B8A11E7F456700095C4B /* Calendar.swift in Sources */,
 				519828281E41BB0E008DCF7B /* BeProductive.xcdatamodeld in Sources */,
 				51FA5D1E1E49A1E500077714 /* DateFormat.swift in Sources */,
 				519828201E41BB0E008DCF7B /* AppDelegate.swift in Sources */,
+				5121B89F1E7F445B00095C4B /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
