@@ -20,9 +20,15 @@ class CalendarCell: UICollectionViewCell {
     func configureCell(_calendar: Calendar) {
         self.calendar = _calendar
         
-        calendarInitialsTextView.text = self.calendar.calendarInitials.capitalized
-        calendarNameTextView.text = self.calendar.calendarName
+        configureContentInCell()
+        
+        self.calendarInitialsTextView.text = self.calendar.calendarInitials.capitalized
+        self.calendarNameTextView.text = self.calendar.calendarName
     }
     
-    
+    func configureContentInCell() {
+        self.calendarInitialsTextView.isEditable = false
+        self.calendarNameTextView.isEnabled = false
+        self.calendarNameTextView.textAlignment = NSTextAlignment.center
+    }
 }

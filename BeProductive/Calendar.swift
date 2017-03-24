@@ -15,10 +15,10 @@ class Calendar {
     
     var calendarInitials: String {
         set {
-            _calendarName = newValue
+            _calendarInitials = newValue
         }
         get {
-            return _calendarName
+            return _calendarInitials
         }
     }
     

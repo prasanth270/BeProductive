@@ -23,6 +23,8 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
     }
     
@@ -79,8 +81,18 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         case EKAuthorizationStatus.authorized:
             loadCalendar()
             //loadEvents()
+            printData()
         default:
             break
+        }
+    }
+    
+    /** Print Function */
+    func printData() {
+        print(" ----")
+        for obj in calendars {
+            print(obj.calendarInitials)
+            print(obj.calendarName)
         }
     }
     
@@ -103,10 +115,12 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         for obj in eventCalenders! {
             
             let title = obj.title
-            let index = title.index(title.startIndex, offsetBy: 1)
-            print(index)
+            //let index = title.index(title.startIndex, offsetBy: 1)
+            print(title[0])
             
-            calendars.append(Calendar(initial: title.substring(to: index), name: title))
+            // title[0] will return the first character of string based
+            // on the extention written below.
+            calendars.append(Calendar(initial: String(title[0]), name: title))
         }
     }
     
@@ -128,3 +142,10 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
+/** Extentions? What are they? */
+extension String {
+    // Always return the first Character in a String
+    subscript(index: Int) -> Character {
+        return self[self.startIndex]
+    }
+}
